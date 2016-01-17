@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+
+<body>
+	<div th:fragment="menu">
+		<div id="vertmenu">
+            <ul>
+                <li><a href="#" th:href="@{/}"><span th:text="#{Menu_Home}">Menu Home</span></a></li>
+                <li><a href="#" th:href="@{/products}"><span th:text="#{Menu_Products}">Menu Products</span></a></li>
+                <li><a href="#" th:href="@{/}"><span th:text="#{Menu_Orders}">Menu Orders</span></a></li>
+            </ul>
+        </div>
+	</div>
+</body>
+</html>

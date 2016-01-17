@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title th:text="#{PageTitle}">Store title</title>
+	
+	<link href="../../../resources/css/default.css"
+          th:href="@{/css/default.css}" rel="stylesheet" />
+          
+    <link rel="shortcut icon" type="image/x-icon" href="../../../resources/img/logo-small.ico"
+    	th:href="@{/img/logo-small.ico}"/>
+</head>
+
+<body>
+	
+	<div id="topbar" th:fragment="authHeader">
+		Login / Logout
+	</div>
+	
+	<div th:fragment="topHeader">
+		<img th:src="@{/img/logo-small.png}" 
+     		src="../../../resources/img/logo-small.png" />
+		<h1 th:text="#{TopTitle}">Top Title</h1>
+    	<h3 th:text="#{TopSubTitle}">Top Sub Title</h3>
+	</div>
+	
+</body>
+
+</html>
