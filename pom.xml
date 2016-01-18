@@ -7,6 +7,8 @@
   
   	<properties>
 		<spring.version>4.2.3.RELEASE</spring.version>
+		<spring-data-jpa.version>1.9.2.RELEASE</spring-data-jpa.version>
+		
 		<thymeleaf.version>2.1.4.RELEASE</thymeleaf.version>
 		
 		<!-- Bean validation -->
@@ -37,7 +39,7 @@
 		</plugins>
 	</build>
 	<dependencies>
-		<!-- Spring mvc -->
+		<!-- Spring -->
 		<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -49,6 +51,26 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        
+        <dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa.version}</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        
+        <dependency>
+	      <groupId>org.springframework</groupId>
+	      <artifactId>spring-aop</artifactId>
+	      <version>${spring.version}</version>
+	      <scope>compile</scope>
+	    </dependency>
+        
         
         <!-- Servlet -->
 		<dependency>

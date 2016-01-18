@@ -3,11 +3,13 @@ package com.forest.repository.jpa;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.forest.entity.Category;
-import com.forest.repository.IRepository;
+import org.springframework.stereotype.Repository;
 
-@org.springframework.stereotype.Repository
-public class JpaCategoryRepository extends AbstractRepository<Category> implements IRepository<Category> {
+import com.forest.entity.Category;
+import com.forest.repository.ICategoryRepository;
+
+@Repository
+public class JpaCategoryRepository extends AbstractRepository<Category> implements ICategoryRepository {
 	
     @PersistenceContext
     private EntityManager em;

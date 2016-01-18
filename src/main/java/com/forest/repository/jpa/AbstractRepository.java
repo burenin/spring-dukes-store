@@ -40,14 +40,14 @@ public abstract class AbstractRepository<T> implements IRepository<T> {
 
 	@Override
 	public List<T> findAll() {
-		CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+		CriteriaQuery<T> cq = (CriteriaQuery<T>)getEntityManager().getCriteriaBuilder().createQuery();
 		cq.select(cq.from(entityClass));
 		return getEntityManager().createQuery(cq).getResultList();
 	}
 
 	@Override
 	public List<T> findRange(int[] range) {
-		CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+		CriteriaQuery<T> cq = (CriteriaQuery<T>)getEntityManager().getCriteriaBuilder().createQuery();
 		cq.select(cq.from(entityClass));
 		Query q = getEntityManager().createQuery(cq);
 		q.setMaxResults(range[1] - range[0]);
