@@ -2,7 +2,6 @@ package com.forest.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.springframework.dao.DataAccessException;

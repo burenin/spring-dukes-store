@@ -7,7 +7,7 @@
       layout:decorator="layouts/template">
 
 <head>
-    <title th:text="#{ListCategoryTitle}">List Category Title</title>
+    <title th:text="#{ListProductTitle}">Prototype List Product Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     
     <link href="../../../resources/css/default.css"
@@ -20,7 +20,24 @@
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		Prototype Product List
+		<form class="jsfcrud_list_form">
+			<div th:text="#{ListProductEmpty}" th:if="${items.empty}">Prototype Product List empty </div>
+			<table th:unless="${items.empty}">
+		        <tbody>
+		        <tr th:each="item : ${items}" th:class="${itemStat.odd}? 'firstRow' : 'secondRow'">
+		            <td>
+		            	<img src="../../../resources/img/tango_nature_icon.png" th:src="@{/img/tango_nature_icon.png}" 
+		            			alt="prototype tango nature alt " title="Prototype tango nature title"/>
+		            	
+		            </td>
+		            <td>
+		            	<a href="list.html" th:href="@{'products/' + ${item.id}}"><span th:text="${item.name}">Prototype product list</span></a>
+		            </td>
+		        </tr>
+		        </tbody>
+		    </table>
+			
+		</form>
 	</div>
 	
 </body>
