@@ -20,23 +20,7 @@
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		<form id="categoryList">
-			<div th:text="#{ListCategoryEmpty}" th:if="${items.empty}">Prototype Category List empty </div>
-			<table th:unless="${items.empty}">
-		        <tbody>
-		        <tr th:each="item : ${items}">
-		            <td>
-		            	<img src="../../../resources/img/tango_nature_icon.png" th:src="@{/img/tango_nature_icon.png}" 
-		            			alt="prototype tango nature alt " title="Prototype tango nature title"/>
-		            	
-		            </td>
-		            <td>
-		            	<a href="list.html" th:href="@{'products/' + ${item.id}}"><span th:text="${item.name}">Prototype product list</span></a>
-		            </td>
-		        </tr>
-		        </tbody>
-		    </table>
-		</form>
+		Prototype Product List
 	</div>
 	
 </body>

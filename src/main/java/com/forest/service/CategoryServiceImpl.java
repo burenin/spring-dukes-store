@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.forest.entity.Category;
 import com.forest.repository.ICategoryRepository;
-import com.forest.repository.IRepository;
 
 @Service
 public class CategoryServiceImpl extends AbstractService<Category> implements ICategoryService {
@@ -15,7 +14,7 @@ public class CategoryServiceImpl extends AbstractService<Category> implements IC
 	
 
 	@Override
-	public IRepository<Category> getRepository() {
+	public ICategoryRepository getRepository() {
 		return repository;
 	}
 }
