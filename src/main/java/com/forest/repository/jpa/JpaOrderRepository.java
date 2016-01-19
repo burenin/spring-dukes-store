@@ -6,9 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import com.forest.entity.CustomerOrder;
 import com.forest.repository.IOrderRepository;
 
+@Repository
 public class JpaOrderRepository extends AbstractRepository<CustomerOrder> implements IOrderRepository {
 
 	@PersistenceContext
