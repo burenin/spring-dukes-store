@@ -20,15 +20,15 @@
         <tbody>
           <tr>
           	<td class="productImgCol">
-          		<img src="../../../resources/img/tango_nature_icon.png" th:src="|/image?id=@{*{id}}|" 
-		            			alt="prototype tango nature alt " title="Prototype tango nature title" height="100px" width="100px"/>
+          		<img src="../../../resources/img/tango_nature_icon.png" th:src="@{'image/' + ${id}}"
+		            			height="100px" width="100px"/>
           	</td>
           	<td>
           		<table>
           			<tbody>
           				<tr>
           					<td class="productDescriptionCol">
-          						<div th:text="*{name} (SKU: *{id})">
+          						<div th:text="|*{name} (SKU: *{id})|">
           							Prototype Product Description
           						</div>
           						<br/>

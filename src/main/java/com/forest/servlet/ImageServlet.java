@@ -31,7 +31,7 @@ import com.forest.service.IProductService;
  * @author markito
  * @link http://balusc.blogspot.com/2007/04/imageservlet.html
  */
-@WebServlet(urlPatterns = "/image/*")
+//@WebServlet(urlPatterns = "/image/*")
 public class ImageServlet extends HttpServlet {
     
     private static final long serialVersionUID = 6439315738094263474L;
