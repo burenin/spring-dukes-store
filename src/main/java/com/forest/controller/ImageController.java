@@ -4,26 +4,25 @@ import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.Closeable;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.forest.entity.Product;
 import com.forest.service.IProductService;
-import com.forest.servlet.ImageServlet;
 
 @Controller
 public class ImageController {
 
-	private static final Logger logger = Logger.getLogger(ImageServlet.class.getCanonicalName());
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ImageController.class);
 	
 	@Autowired
 	private IProductService						productService;
@@ -93,8 +92,9 @@ public class ImageController {
 					close(byteInputStream);
 				}
 			}
-		}catch (IOException ignore) {
-			
+		}catch (IOException e) {
+			LOGGER.error("Problems during image resource manipulation.", 
+                    e);
 		}
 
     }
@@ -105,9 +105,8 @@ public class ImageController {
             try {
                 resource.close();
             } catch (IOException e) {
-                logger.log(Level.SEVERE, 
-                        "Problems during image resource manipulation. {0}", 
-                        e.getMessage());
+                LOGGER.error("Problems during image resource manipulation.", 
+                        e);
             }
         }
     }

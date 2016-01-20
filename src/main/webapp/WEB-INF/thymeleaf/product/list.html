@@ -24,7 +24,7 @@
 			<div th:text="#{ListProductEmpty}" th:if="${items.empty}">Prototype Product List empty </div>
 			<table th:unless="${items.empty}" border="0" cellpadding="0" cellspacing="0" rules="all" >
 		        <tbody>
-		        <tr class="productColumn" th:each="item : ${items}">
+		        <tr class="productColumn" th:each="item : ${items}" th:class="${itemStat.odd}? 'firstRow' : 'secondRow'">
 		            <div th:replace="fragments/productProfile :: productData (${item})">
 						prototype product data
 					</div>
