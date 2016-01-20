@@ -8,7 +8,6 @@
 	
 	<link href="../../../resources/css/default.css"
           th:href="@{/css/default.css}" rel="stylesheet" />
-          
     <link rel="shortcut icon" type="image/x-icon" href="../../../resources/img/logo-small.ico"
     	th:href="@{/img/logo-small.ico}"/>
 </head>
@@ -35,6 +34,7 @@
 		      					<span id="price" th:text="|$ *{#numbers.formatDecimal(price, 0, 'COMMA', 2, 'POINT')}|">0.00</span>
           					</td>
           					<td>
+          						<button type="submit" name="add" th:value="*{id}" th:text="#{AddToCart}" class="btn" style="margin-top:10px;">Prototype add to cart</button>
           					</td>
           				</tr>
           			</tbody>

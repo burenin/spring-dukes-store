@@ -20,7 +20,7 @@
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		<form class="jsfcrud_list_form">
+		<form action="#" th:action="@{/cart}" th:method="'post'" class="jsfcrud_list_form">
 			<div th:text="#{ListProductEmpty}" th:if="${items.empty}">Prototype Product List empty </div>
 			<table th:unless="${items.empty}" border="0" cellpadding="0" cellspacing="0" rules="all" >
 		        <tbody>
