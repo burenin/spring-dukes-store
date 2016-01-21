@@ -6,9 +6,33 @@
 
 <body>
 	<div th:fragment="cart" id="shoppingCart">
-		<div th:text="${@cart.getValue()}">
-			Prototype Shopping Cart
-		</div>
+		<table th:if="${@cart.getTotal() > 0}" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+					<img th:src="@{/img/full_shopping_cart.png}" alt="Prototy alt" width="40"
+	     				src="../../../resources/img/full_shopping_cart.png" th:alt-title="#{Cart_Title}"/>
+				</td>
+     			<td>
+     				<span th:text="#{Cart_Title}" class="subTitle" style="float:left">Prototype cart title</span>
+     			</td>
+			</tr>
+			<tr>
+				<table id="shoppingCart" border="0" cellpadding="2" cellspacing="0">
+					 <thead>
+				        <tr>
+				            <th th:text="#{Cart_Item}">Prototype cart item</th>
+				            <th th:text="#{Cart_Price}">Prototype cart price</th>
+				        </tr>
+			        </thead>
+			        <tbody>
+			        	<tr th:each="item : ${@cart.getCartItems()}">
+			        		<td th:text="${item.name}">Prototype Item name</td>
+			        		<td th:text="|$ ${#numbers.formatDecimal(item.price, 0, 'COMMA', 2, 'POINT')}|">$ 0.00</td>
+			        	</tr>
+			        </tbody>
+				</table>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>

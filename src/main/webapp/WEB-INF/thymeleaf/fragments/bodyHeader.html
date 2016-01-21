@@ -16,15 +16,21 @@
 <body>
 	
 	<div id="topbar" th:fragment="authHeader">
-		Login / Logout
+		<form>
+			<label for="username" th:text="#{Topbar_User_Label}">Prototype User label</label>
+			<input id="username" type="text" size="50"/>
+			
+			<label for="password" th:text="#{Topbar_Pass_Label}">Prototype User Password</label>
+			<input id="password" type="password" size="50"/>
+		</form>
 	</div>
 	
-	<div th:fragment="topHeader">
+	<header id="header" th:fragment="topHeader">
 		<img th:src="@{/img/logo-small.png}" 
      		src="../../../resources/img/logo-small.png" />
 		<h1 th:text="#{TopTitle}">Top Title</h1>
     	<h3 th:text="#{TopSubTitle}">Top Sub Title</h3>
-	</div>
+	</header>
 	
 </body>
 

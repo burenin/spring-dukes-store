@@ -33,8 +33,20 @@ public class ShoppingCart implements Serializable{
         }
     }
 	
-	public String getValue(){
-		return "Session scope cart value";
-	}
+	public double getTotal() {
+        if (cartItems == null || cartItems.isEmpty()) {
+            return 0f;
+        }
 
+        double total = 0f;
+        for (Product item : cartItems) {
+            total += item.getPrice();
+        }
+        LOGGER.info("Actual Total:{}", total);
+        return total;
+    }
+	
+	public List<Product> getCartItems() {
+        return cartItems;
+    }
 }

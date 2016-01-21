@@ -23,7 +23,7 @@ Color scheme
 
 */
 html,body {
-    background: #fff url(#{resource['img:background.jpg']}) repeat-x 50% -26px;
+    background: #fff url("../img/background.jpg") repeat-x 50% -26px;
     font-size: 12px;
     font-family: Verdana, "Verdana CE", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
     margin: 0;
@@ -98,7 +98,7 @@ nav #option {
 header {
     position: relative;
     height: 150px;
-    background: #fff url(#{resource['img:top-background.jpg']}) repeat-x;
+    background: #fff url("../img/top-background.jpg") repeat-x;
     width: 100%;
     display: block;
     overflow: auto;
@@ -117,7 +117,7 @@ header img {
     width: 23%;
     float: left;
     position: relative;
-    background: #fff url(#{resource['img:top-background.jpg']}) repeat-x;
+    background: #fff url("../img/top-background.jpg") repeat-x;
     background-color: #3B5A3F;
     border: none 5px #000000;
     -moz-border-radius: 10px;

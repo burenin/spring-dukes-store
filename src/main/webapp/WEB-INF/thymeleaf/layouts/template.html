@@ -15,18 +15,14 @@
     	th:href="@{/img/logo-small.ico}"/>
 </head>
 <body>
-	<div id="topbar">
-		<div th:replace="fragments/bodyHeader :: authHeader">
-			auth header
-		</div>
+	<div id="topbar" th:replace="fragments/bodyHeader :: authHeader">
+		auth header
 	</div>
 	
 	<div id="pagewidth">
 		<!-- ############## header ############## -->
-        <header id="header">
-            <div th:replace="fragments/bodyHeader :: topHeader">
-				Template top header header
-			</div>
+        <header id="header" th:replace="fragments/bodyHeader :: topHeader">
+			Template top header header
         </header>
         <div id="wrapper" class="clearfix">
         	<br />
