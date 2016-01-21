@@ -6,7 +6,9 @@
 
 <body>
 	<div th:fragment="cart" id="shoppingCart">
-		Prototype Shopping Cart
+		<div th:text="${@cart.getValue()}">
+			Prototype Shopping Cart
+		</div>
 	</div>
 </body>
 </html>

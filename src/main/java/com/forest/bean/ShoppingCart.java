@@ -32,5 +32,9 @@ public class ShoppingCart implements Serializable{
             cartItems.add(p);
         }
     }
+	
+	public String getValue(){
+		return "Session scope cart value";
+	}
 
 }
