@@ -1,5 +1,7 @@
 package com.forest.controller;
 
+import java.util.Map.Entry;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,8 @@ import com.forest.bean.ShoppingCart;
 import com.forest.entity.Product;
 import com.forest.service.IProductService;
 
-@Controller
+@Controller()
+@RequestMapping(value="/cart")
 public class ShoppingCartController {
 	
 	@Autowired
@@ -19,9 +22,16 @@ public class ShoppingCartController {
 	@Autowired
 	private ShoppingCart						cart;
 	
-	@RequestMapping(value="/cart", params={"add"})
+	@RequestMapping(value="/add")
     public String addProduct(final HttpServletRequest req) {
-        final Integer productId = Integer.valueOf(req.getParameter("add"));
+		String id = null;
+		for (Entry<String, String[]> entry : req.getParameterMap().entrySet()){
+			if (entry.getKey().startsWith("id=")){
+				String[] value = entry.getValue();
+				id = value[0];
+			}
+		}
+        final Integer productId = Integer.valueOf(id);
         Product p = productService.findById(productId);
         cart.addItem(p);
         return "redirect:/products/" + p.getCategory().getId();
