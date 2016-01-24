@@ -7,7 +7,7 @@
 <body>
 	
 	<div th:fragment="left">
-		<form action="">
+		<form action="#" th:action="@{/cart/handle}" th:method="'post'">
 			<br />
 			<div th:replace="fragments/menu :: menu"></div>
 			<br />

@@ -49,4 +49,8 @@ public class ShoppingCart implements Serializable{
 	public List<Product> getCartItems() {
         return cartItems;
     }
+	
+	public void clear() {
+        cartItems.clear();
+    }
 }

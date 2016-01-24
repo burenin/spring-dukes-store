@@ -17,7 +17,7 @@
      			</td>
 			</tr>
 			<tr>
-				<table id="shoppingCart" border="0" cellpadding="2" cellspacing="0">
+				<table id="table-shoppingCart" border="0" cellpadding="2" cellspacing="0">
 					 <thead>
 				        <tr>
 				            <th th:text="#{Cart_Item}">Prototype cart item</th>
@@ -35,8 +35,14 @@
 			<br />
 			<tr>
 				<table>
-					<input type="submit" th:value="#{Cart_Clear}" value="Prototype Clear"/>
-					<input type="submit" th:value="#{Cart_Checkout}" value="Prototype Checkout"/>
+					<tr>
+						<td>
+							<input type="submit" th:value="#{Cart_Clear}" value="Prototype Clear" name="clear"/>
+						</td>
+						<td>
+							<input type="submit" th:value="#{Cart_Checkout}" value="Prototype Checkout" name="checkout"/>
+						</td>
+					</tr>
 				</table>					
 			</tr>
 		</table>
