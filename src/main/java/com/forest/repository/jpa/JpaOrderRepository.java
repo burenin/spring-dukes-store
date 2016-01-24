@@ -2,8 +2,6 @@ package com.forest.repository.jpa;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
@@ -13,19 +11,9 @@ import com.forest.repository.IOrderRepository;
 
 @Repository
 public class JpaOrderRepository extends AbstractRepository<CustomerOrder> implements IOrderRepository {
-
-	@PersistenceContext
-    private EntityManager em;
-    
-    
-
+	
 	public JpaOrderRepository() {
 		super(CustomerOrder.class);
-	}
-
-	@Override
-	public EntityManager getEntityManager() {
-		return em;
 	}
 	
 	@SuppressWarnings("unchecked")

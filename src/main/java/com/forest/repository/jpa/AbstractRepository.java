@@ -2,6 +2,8 @@ package com.forest.repository.jpa;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -14,13 +16,20 @@ public abstract class AbstractRepository<T> implements IRepository<T> {
 	
 	private Class<T> entityClass;
 	
+	@PersistenceContext
+    private EntityManager em;
+	
 	public AbstractRepository() {
-        
     }
 
     public AbstractRepository(final Class<T> entityClass) {
         this.entityClass = entityClass;
     }
+    
+    @Override
+	public EntityManager getEntityManager() {
+		return em;
+	}
 	
 	@Override
 	public void save(T entity) throws DataAccessException {

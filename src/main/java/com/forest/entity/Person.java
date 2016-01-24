@@ -9,11 +9,30 @@ package com.forest.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import javax.persistence.*;
+import java.util.Set;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 /**
  *
@@ -162,6 +181,23 @@ public class Person implements Serializable {
 
     public void setGroupsList(List<Groups> groupsList) {
         this.groupsList = groupsList;
+    }
+    
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+    	Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+    	for (Groups group : getGroupsList()){
+    		authorities.add(new SimpleGrantedAuthority(group.getName()));
+    	}
+    	return authorities;
+    }
+
+    public boolean isAdmin() {
+    	for (Groups group : getGroupsList()){
+    		if ("ADMINS".equals(group.getName())){
+    			return true;
+    		}
+    	}
+        return false;
     }
 
     @Override

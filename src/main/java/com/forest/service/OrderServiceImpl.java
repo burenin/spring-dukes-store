@@ -14,7 +14,7 @@ import com.forest.repository.IOrderRepository;
 @Service
 public class OrderServiceImpl extends AbstractService<CustomerOrder> implements IOrderService {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceImpl.class);
 
 	@Autowired
 	private IOrderRepository repository;

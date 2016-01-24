@@ -6,6 +6,15 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security.xsd">
 	
+	<bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+	
+	<bean id="userService" class="com.forest.service.UserService" />
+	
+	<bean id="rememberMeServices" class="org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices">
+		<constructor-arg value="remember-me-key"/>
+		<constructor-arg ref="userService"/>
+	</bean>
+	
 	<security:http auto-config="true" disable-url-rewriting="true" use-expressions="true">
 		<security:form-login login-page="/signin" authentication-failure-url="/signin?error=1"/>
 		<security:logout logout-url="/logout" />
