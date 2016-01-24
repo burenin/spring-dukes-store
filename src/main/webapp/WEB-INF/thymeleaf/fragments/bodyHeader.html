@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      lang="en">
 <head>
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -16,7 +19,7 @@
 <body>
 	
 	<div id="topbar" th:fragment="authHeader">
-		<form>
+		<form th:if="${#authorization.expression('!isAuthenticated()')}">
 			<label for="username" th:text="#{Topbar_User_Label}">Prototype User label</label>
 			<input id="username" type="text" size="50"/>
 			
