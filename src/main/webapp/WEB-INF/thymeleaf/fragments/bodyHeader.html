@@ -19,12 +19,32 @@
 <body>
 	
 	<div id="topbar" th:fragment="authHeader">
-		<form th:if="${#authorization.expression('!isAuthenticated()')}">
+		<span th:if="${#authorization.expression('!isAuthenticated()')}">
+			<form th:action="@{/signin}" action="#">
+				<label for="username" th:text="#{Topbar_User_Label}">Prototype User label</label>
+				<input id="username" type="text" size="50"/>
+				
+				<label for="password" th:text="#{Topbar_Pass_Label}">Prototype User Password</label>
+				<input id="password" type="password" size="50"/>
+				
+				<input type="submit" th:value="#{Topbar_Login_Label}" value="Prototype Login label"/>
+				
+				<h:commandButton action="#{userController.login}"  value="#{bundle.Topbar_Login_Label}" /> 
+	        	<h:commandButton action="customer/Create.xhtml"  value="#{bundle.Topbar_Signup_Label}" />
+			</form>
+			<form th:action="@{/signin}" action="#">
+			</form>
+		</span>
+		<form th:if="${#authorization.expression('isAuthenticated()')}">
 			<label for="username" th:text="#{Topbar_User_Label}">Prototype User label</label>
 			<input id="username" type="text" size="50"/>
 			
 			<label for="password" th:text="#{Topbar_Pass_Label}">Prototype User Password</label>
 			<input id="password" type="password" size="50"/>
+			
+			<h:commandButton rendered="#{userController.admin}" action="#{userController.goAdmin}"  value="Administration" />
+        <h:commandButton action="#{userController.logout}" value="#{bundle.Topbar_Logout_Label}"/>
+        <h:outputText value=" #{bundle.Topbar_User_Label} #{userController.authenticatedUser.email}"  styleClass="user"/>
 		</form>
 	</div>
 	
