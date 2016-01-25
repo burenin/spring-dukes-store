@@ -32,8 +32,11 @@
 				<h:commandButton action="#{userController.login}"  value="#{bundle.Topbar_Login_Label}" /> 
 	        	<h:commandButton action="customer/Create.xhtml"  value="#{bundle.Topbar_Signup_Label}" />
 			</form>
-			<form th:action="@{/signin}" action="#">
+			<form th:action="@{/signup}" action="#">
+				<input type="submit" th:value="#{Topbar_Signup_Label}" value="Prototype Signup label"/>
 			</form>
+		</span>
+		<span th:if="${#authorization.expression('isAuthenticated()')}">
 		</span>
 		<form th:if="${#authorization.expression('isAuthenticated()')}">
 			<label for="username" th:text="#{Topbar_User_Label}">Prototype User label</label>
