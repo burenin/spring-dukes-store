@@ -28,7 +28,7 @@
 			
 			<input type="submit" th:value="#{Topbar_Login_Label}" value="Prototype Login label"/>
 		</form>
-		<form th:action="@{/signup}" action="#" th:if="${#authorization.expression('!isAuthenticated()')}">
+		<form th:action="@{/customer/new}" action="#" th:if="${#authorization.expression('!isAuthenticated()')}">
 			<input type="submit" th:value="#{Topbar_Signup_Label}" value="Prototype Signup label"/>
 		</form>
 <!-- 		<form th:if="${#authorization.expression('isAuthenticated()')}"> -->

@@ -19,12 +19,50 @@
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		<form method="post" th:action="@{/signup}" th:object="${signupForm}">
+		<form method="post" th:action="@{/signup}" th:object="${customer}">
 			<table>
 		        <tbody>
 		        	<tr>
 			        	<td><label for="firstname" th:text="#{CreateCustomerLabel_firstname}">Prototype Customer firtname</label></td>
-						<td><input id="firstname" name="username" type="text" size="50"/></td>
+						<td>
+							<input id="firstname" type="text" required="required" th:field="*{firstname}" th:title="#{CreateCustomerTitle_firstname}"/>
+							<span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Incorrect firstname</span>
+						</td>
+			        </tr>
+			        <tr>
+			        	<td><label for="lastname" th:text="#{CreateCustomerLabel_lastname}">Prototype Customer lastname</label></td>
+						<td>
+							<input id="lastname" type="text" required="required" th:field="*{lastname}" th:title="#{CreateCustomerTitle_lastname}"/>
+							<span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Incorrect lastname</span>
+						</td>
+			        </tr>
+			        <tr>
+			        	<td><label for="email" th:text="#{CreateCustomerLabel_email}">Prototype Customer email</label></td>
+						<td>
+							<input id="email" type="text" required="required" th:field="*{email}" th:title="#{CreateCustomerTitle_email}"/>
+							<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect email</span>
+						</td>
+			        </tr>
+			        <tr>
+			        	<td><label for="address" th:text="#{CreateCustomerLabel_address}">Prototype Customer address</label></td>
+						<td>
+							<input id="address" type="text" required="required" th:field="*{address}" th:title="#{CreateCustomerTitle_address}"/>
+							<span th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Incorrect address</span>
+						</td>
+			        </tr>
+			        <tr>
+			        	<td><label for="city" th:text="#{CreateCustomerLabel_city}">Prototype Customer city</label></td>
+						<td>
+							<input id="city" type="text" required="required" th:field="*{city}" th:title="#{CreateCustomerTitle_city}"/>
+							<span th:if="${#fields.hasErrors('city')}" th:errors="*{city}">Incorrect city</span>
+						</td>
+			        </tr>
+			        <tr>
+			        	<td><label for="password" th:text="#{CreateCustomerLabel_password}">Prototype Customer password</label></td>
+						<td>
+							<input id="password" type="password" required="required" th:field="*{password}" th:title="#{CreateCustomerTitle_password}"/>
+							<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect password</span>
+						</td>
 			        </tr>
 		        </tbody>
 		    </table>
