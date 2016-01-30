@@ -7,7 +7,7 @@
       layout:decorator="layouts/template">
 
 <head>
-    <title th:text="#{CreateCustomerTitle}">Prototype Customer Title</title>
+    <title th:text="#{ListProductTitle}">Prototype List Product Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     
     <link href="../../../resources/css/default.css"
@@ -16,16 +16,19 @@
     <link rel="shortcut icon" type="image/x-icon" href="../../../resources/img/logo-small.ico"
     	th:href="@{/img/logo-small.ico}"/>
 </head>
+<img src="../../images/header.jpg" th:src="@{/resources/images/header.jpg}" alt="Spring Travel" />
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		<form method="post" th:action="@{/signup}" th:object="${signupForm}">
-			<table>
+		<form action="#" th:action="@{/cart/add}" th:method="'post'" class="jsfcrud_list_form">
+			<div th:text="#{ListProductEmpty}" th:if="${items.empty}">Prototype Product List empty </div>
+			<table th:unless="${items.empty}" border="0" cellpadding="0" cellspacing="0" rules="all" >
 		        <tbody>
-		        	<tr>
-			        	<td><label for="firstname" th:text="#{CreateCustomerLabel_firstname}">Prototype Customer firtname</label></td>
-						<td><input id="firstname" name="username" type="text" size="50"/></td>
-			        </tr>
+		        <tr class="productColumn" th:each="item : ${items}" th:class="${itemStat.odd}? 'firstRow' : 'secondRow'">
+		            <div th:replace="fragments/productProfile :: productData (${item})">
+						prototype product data
+					</div>
+		        </tr>
 		        </tbody>
 		    </table>
 			

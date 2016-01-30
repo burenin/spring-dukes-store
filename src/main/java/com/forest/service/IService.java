@@ -11,7 +11,7 @@ import com.forest.repository.IRepository;
 public interface IService<T> {
 	IRepository<T> getRepository();
 	
-	void save(T entity) throws DataAccessException;
+	T save(T entity) throws DataAccessException;
 	
 	void delete (T entity) throws DataAccessException;
 	

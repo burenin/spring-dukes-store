@@ -7,7 +7,7 @@
       layout:decorator="layouts/template">
 
 <head>
-    <title th:text="#{CreateCustomerTitle}">Prototype Customer Title</title>
+    <title>Login</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     
     <link href="../../../resources/css/default.css"
@@ -19,17 +19,24 @@
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		<form method="post" th:action="@{/signup}" th:object="${signupForm}">
+		<form action="/signinProcess" method="post" th:action="@{/signinProcess}" th:if="${#authorization.expression('!isAuthenticated()')}">
 			<table>
 		        <tbody>
-		        	<tr>
-			        	<td><label for="firstname" th:text="#{CreateCustomerLabel_firstname}">Prototype Customer firtname</label></td>
-						<td><input id="firstname" name="username" type="text" size="50"/></td>
-			        </tr>
+		        <tr>
+		        	<td><label for="username" th:text="#{Username_Label}">Prototype Username label</label></td>
+					<td><input id="username" name="username" type="text" size="50"/></td>
+		        </tr>
+		        <tr>
+		        	<td><label for="password" th:text="#{Password_Label}">Prototype User Password</label></td>
+					<td><input id="password" name="password" type="password" size="50"/></td>
+		        </tr>
+		        <tr>
+		        	<td colspan="2"><input type="submit" th:value="#{Topbar_Login_Label}" value="Prototype Login label"/></td>
+		        </tr>
 		        </tbody>
 		    </table>
-			
 		</form>
+		
 	</div>
 	
 </body>

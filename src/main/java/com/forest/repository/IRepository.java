@@ -11,7 +11,7 @@ public interface IRepository<T> {
 	
 	EntityManager getEntityManager();
 	
-	void save(T entity) throws DataAccessException;
+	T save(T entity) throws DataAccessException;
 	
 	void delete (T entity) throws DataAccessException;
 	

@@ -32,9 +32,8 @@ public abstract class AbstractRepository<T> implements IRepository<T> {
 	}
 	
 	@Override
-	public void save(T entity) throws DataAccessException {
-		getEntityManager().merge(entity);
-
+	public T save(T entity) throws DataAccessException {
+		return getEntityManager().merge(entity);
 	}
 
 	@Override

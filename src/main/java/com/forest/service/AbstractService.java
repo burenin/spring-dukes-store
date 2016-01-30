@@ -17,8 +17,8 @@ public abstract class AbstractService<T> implements IService<T> {
 
 	@Override
 	@Transactional
-	public void save(T entity) throws DataAccessException {
-		getRepository().save(entity);
+	public T save(T entity) throws DataAccessException {
+		return getRepository().save(entity);
 	}
 
 	@Override
