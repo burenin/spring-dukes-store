@@ -19,7 +19,7 @@
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		<form method="post" th:action="@{/signup}" th:object="${customer}">
+		<form id="signup" method="post" th:action="@{/customer/new}" th:object="${customer}">
 			<table>
 		        <tbody>
 		        	<tr>
@@ -66,8 +66,21 @@
 			        </tr>
 		        </tbody>
 		    </table>
-			
+			<ul class="commandButtons">
+				<li>
+					<a href="javascript: submitform();"><span th:text="#{CreateCustomerSaveLink}">Prototype Save Link</span></a>
+					
+				</li>
+				<li>
+					<a href="#" th:href="@{/}">Cancel</a>
+				</li>
+             </ul>
 		</form>
+		<script type="text/javascript">
+			function submitform() {
+				document.forms["signup"].submit();
+			}
+		</script>
 	</div>
 	
 </body>
