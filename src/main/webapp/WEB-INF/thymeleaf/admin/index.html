@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      lang="en"
+      layout:decorator="layouts/template">
+
+<head>
+    <title th:text="#{AdminHomeTitle}">Prototype Admin Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <link href="../../../resources/css/default.css"
+          th:href="@{/css/default.css}" rel="stylesheet" />
+          
+    <link rel="shortcut icon" type="image/x-icon" href="../../../resources/img/logo-small.ico"
+    	th:href="@{/img/logo-small.ico}"/>
+</head>
+
+<body>
+	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
+	<div layout:fragment="body">
+		<form>
+			<ul class="adminItem">
+				<li><h2 >Manage Categories</h2></li>
+				<li><a href="category/list.html" th:href="@{admin/category/list}"><span th:text="#{ListCategoryTitle}">Prototype Category List</span></a></li>
+				<li><a href="category/create.html" th:href="@{admin/category/create}"><span th:text="#{CreateCategoryTitle}">Prototype Create Category</span></a></li>
+				<li><h2 >Manage Customers</h2></li>
+				<li><a href="customer/list.html" th:href="@{admin/customer/list}"><span th:text="#{ListCustomerTitle}">Prototype Customer List</span></a></li>
+				<li><a href="customer/create.html" th:href="@{admin/customer/create}"><span th:text="#{CreateCustomerAdminTitle}">Prototype Create Customer</span></a></li>
+				<li><h2 >Manage Administrators</h2></li>
+				<li><a href="administrator/list.html" th:href="@{admin/administrator/list}"><span th:text="#{ListAdministratorTitle}">Prototype Administrator List</span></a></li>
+				<li><a href="administrator/create.html" th:href="@{admin/administrator/create}"><span th:text="#{CreateAdministratorTitle}">Prototype Create Administrator</span></a></li>
+				<li><h2 >Manage Groups</h2></li>
+				<li><a href="groups/list.html" th:href="@{admin/groups/list}"><span th:text="#{ListGroupsTitle}">Prototype Groups List</span></a></li>
+				<li><a href="groups/create.html" th:href="@{admin/groups/create}"><span th:text="#{CreateGroupsTitle}">Prototype Create Groups</span></a></li>
+				<li><h2 >Manage Products</h2></li>
+				<li><a href="product/list.html" th:href="@{admin/product/list}"><span th:text="#{ListProductTitle}">Prototype Product List</span></a></li>
+				<li><a href="product/create.html" th:href="@{admin/product/create}"><span th:text="#{CreateProductTitle}">Prototype Create Product</span></a></li>
+				<li><h2 >Manage Orders</h2></li>
+				<li><a href="order/list.html" th:href="@{admin/order/list}"><span th:text="#{ListCustomerOrderTitle}">Prototype Order List</span></a></li>
+				<li><a href="/dukes-shipment/admin/index.xhtml" ><span th:text="#{GoToShipment}">Prototype Go to Shipment</span></a></li>
+			</ul>
+		</form>
+	</div>
+	
+</body>
+
+</html>

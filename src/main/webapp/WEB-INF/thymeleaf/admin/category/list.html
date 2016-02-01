@@ -19,8 +19,14 @@
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		<form id="categoryList">
+		<form class="jsfcrud_list_form">
 			<div th:text="#{ListCategoryEmpty}" th:if="${items.empty}">Prototype Category List empty </div>
+			<ul>
+				<li><a href="category/list.html" th:href="@{admin/category/list}"><span th:text="#{ListCategoryTitle}">Prototype Category List</span></a></li>
+				<li><h:commandLink action="#{categoryController.previous}" value="#{bundle.Previous} #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasPreviousPage}"/></li>
+                <li><h:commandLink action="#{categoryController.next}" value="#{bundle.Next} #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasNextPage}"/></li>
+                <li><h:commandLink action="#{categoryController.prepareCreate}" value="#{bundle.ListCategoryCreateLink}"/></li>
+			</ul>
 			<table th:unless="${items.empty}">
 		        <tbody>
 		        <tr th:each="item : ${items}">

@@ -20,4 +20,17 @@ public class CategoryController {
         model.addAttribute("items", categoryService.getItems());
         return "product/listCategory";
     }
+	
+	@RequestMapping(value = "admin/category/list", method = RequestMethod.GET)
+    public String adminCategoryList(Model model) {
+        model.addAttribute("items", categoryService.getItems());
+        return "category/list";
+    }
+	
+	@RequestMapping(value = "admin/category/create", method = RequestMethod.GET)
+    public String adminCategoryCreate(Model model) {
+        model.addAttribute("items", categoryService.getItems());
+        return "product/listCategory";
+    }
+	
 }
