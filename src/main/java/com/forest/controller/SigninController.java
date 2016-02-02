@@ -19,7 +19,7 @@ public class SigninController {
 	
 	@RequestMapping(value = "signin/success")
 	public String signinSuccess(Principal principal) {
-		String page = "/";
+		String page = "welcome";
 		if ((principal != null) && ( (principal instanceof UserService.User))) {
 			User user = User.class.cast(principal);
 			if (user.isAdmin()){
