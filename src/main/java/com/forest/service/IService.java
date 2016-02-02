@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import org.springframework.dao.DataAccessException;
 
 import com.forest.repository.IRepository;
+import com.forest.util.AbstractPaginationHelper;
 
 public interface IService<T> {
 	IRepository<T> getRepository();
@@ -26,4 +27,6 @@ public interface IService<T> {
 	int count();
 	
 	List<T> getItems();
+	
+	AbstractPaginationHelper<T> getPagination();
 }

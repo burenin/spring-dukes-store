@@ -57,6 +57,7 @@ public abstract class AbstractService<T> implements IService<T> {
 		return getRepository().count();
 	}
 	
+	@Override
 	public AbstractPaginationHelper<T> getPagination() {
 		if (pagination == null) {
             pagination = new AbstractPaginationHelper<T>(AbstractPaginationHelper.DEFAULT_SIZE) {
@@ -85,4 +86,8 @@ public abstract class AbstractService<T> implements IService<T> {
 		}
 		return items;
 	}
+
+	
+	
+	
 }

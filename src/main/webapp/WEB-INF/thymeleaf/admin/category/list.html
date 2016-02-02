@@ -22,21 +22,37 @@
 		<form class="jsfcrud_list_form">
 			<div th:text="#{ListCategoryEmpty}" th:if="${items.empty}">Prototype Category List empty </div>
 			<ul>
-				<li><a href="category/list.html" th:href="@{admin/category/list}"><span th:text="#{ListCategoryTitle}">Prototype Category List</span></a></li>
-				<li><h:commandLink action="#{categoryController.previous}" value="#{bundle.Previous} #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasPreviousPage}"/></li>
-                <li><h:commandLink action="#{categoryController.next}" value="#{bundle.Next} #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasNextPage}"/></li>
-                <li><h:commandLink action="#{categoryController.prepareCreate}" value="#{bundle.ListCategoryCreateLink}"/></li>
+				<li><a href="category/list.html" th:href="@{admin/category/previous}" th:if="${pagination.hasPreviousPage()}"><span th:text="|#{Previous} ${pagination.pageSize}|">Prototype Previous Page</span></a></li>
+				<li><a href="category/list.html" th:href="@{admin/category/next}" th:if="${pagination.hasNextPage()}"><span th:text="|#{Next} ${pagination.pageSize}|">Prototype Next Page</span></a></li>
+				<li><a href="category/create.html" th:href="@{admin/category/create}"><span th:text="#{ListCategoryCreateLink}">Prototype List Category Create Link</span></a></li>
 			</ul>
-			<table th:unless="${items.empty}">
+			<table th:unless="${items.empty}" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" >
+				<thead>
+		            <tr>
+		                <th th:text="#{ListCategoryTitle_id}">Prototype id</th>
+		                <th th:text="#{ListCategoryTitle_name}">Prototype name</th>
+		                <th th:text="#{ListCategoryTitle_tags}">Prototype tags</th>
+		                <th></th>
+		            </tr>
+		        </thead>
 		        <tbody>
-		        <tr th:each="item : ${items}">
-		            <td>
-		            	<img src="../../../resources/img/tango_nature_icon.png" th:src="@{/img/tango_nature_icon.png}" 
-		            			alt="prototype tango nature alt " title="Prototype tango nature title"/>
-		            	
-		            </td>
-		            <td>
-		            	<a href="list.html" th:href="@{'products/' + ${item.id}}"><span th:text="${item.name}">Prototype product list</span></a>
+		        <tr th:each="item : ${items}" th:object="${item}">
+		            <td th:text="*{id}">1234</td>
+		            <td th:text="*{name}">Prototype Name</td>
+		            <td th:text="*{tags}">Prototype Tags</td> 
+		            <td th:text="*{tags}">
+		            	<a th:href="@{|admin/category/*{id}/view|}"
+                                   href="view.html"><span th:text="#{ListCategoryViewLink}">Prototype View</span></a>
+                        &nbsp;
+                        <a th:href="@{|admin/category/*{id}/edit|}"
+                                   href="edit.html"><span th:text="#{ListCategoryEditLink}">Prototype Edit</span></a>
+                        &nbsp;
+                        <a th:href="@{|admin/category/*{id}/delete|}"
+                                   href="view.html"><span th:text="#{ListCategoryDestroyLink}">Prototype Delete</span></a>
+                                   
+                        <form action="#" th:action="@{'/bookings/' + *{id}}" th:method="'delete'" class="jsfcrud_list_form">
+	                        <button type="submit">Cancel</button>
+	                    </form>
 		            </td>
 		        </tr>
 		        </tbody>
