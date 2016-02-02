@@ -6,7 +6,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security.xsd">
 	
-	<bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+	<bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
 	
 	<bean id="userService" class="com.forest.service.UserService" />
 	

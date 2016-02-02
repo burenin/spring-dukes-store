@@ -31,15 +31,10 @@
 		<form th:action="@{/customer/new}" action="#" th:if="${#authorization.expression('!isAuthenticated()')}">
 			<input type="submit" th:value="#{Topbar_Signup_Label}" value="Prototype Signup label"/>
 		</form>
-		<form action="/signinProcess" method="post" th:action="@{/signinProcess}"  th:if="${#authorization.expression('isAuthenticated()')}">
+		<form action="/logout" method="post" th:action="@{/logout}"  th:if="${#authorization.expression('isAuthenticated()')}">
 			<input type="submit" th:value="#{Topbar_Logout_Label}" value="Prototype logout label"/>
+			<span th:text="!#{Topbar_User_Label} ${#authentication.name}|" class="user">Prototype Tobbar User label</span>
 		</form>
-		
-		<h:form rendered="#{userController.logged}">
-	        <h:commandButton rendered="#{userController.admin}" action="#{userController.goAdmin}"  value="Administration" />
-	        <h:commandButton action="#{userController.logout}" value="#{bundle.Topbar_Logout_Label}"/>
-	        <h:outputText value=" #{bundle.Topbar_User_Label} #{userController.authenticatedUser.email}"  styleClass="user"/>
-	    </h:form>
 	</div>
 	
 	<header id="header" th:fragment="topHeader">

@@ -36,7 +36,7 @@ public class UserService implements UserDetailsService {
 		return new UsernamePasswordAuthenticationToken(createUser(person), null, person.getAuthorities());
 	}
 	
-	private static class User extends org.springframework.security.core.userdetails.User {
+	public static class User extends org.springframework.security.core.userdetails.User {
 
 		private static final long serialVersionUID = 7551786221146601323L;
 		private final Person person;

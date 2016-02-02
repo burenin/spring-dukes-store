@@ -23,6 +23,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+
 /**
  *
  * @author markito

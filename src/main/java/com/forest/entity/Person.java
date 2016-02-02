@@ -10,7 +10,6 @@ package com.forest.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,6 +17,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -54,7 +54,7 @@ public class Person implements Serializable {
     @JoinTable(name = "PERSON_GROUPS", joinColumns = {
         @JoinColumn(name = "EMAIL", referencedColumnName = "EMAIL")}, inverseJoinColumns = {
         @JoinColumn(name = "GROUPS_ID", referencedColumnName = "ID")})
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     protected List<Groups> groupsList;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
