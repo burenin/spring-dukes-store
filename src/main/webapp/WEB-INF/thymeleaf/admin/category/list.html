@@ -19,11 +19,12 @@
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		<form class="jsfcrud_list_form">
+		<form id="list" class="jsfcrud_list_form" th:method="'delete'" th:action="@{|admin/category/*{id}/delete|}" >
+			<input type="hidden" name="deleteId" value=""/>
 			<div th:text="#{ListCategoryEmpty}" th:if="${items.empty}">Prototype Category List empty </div>
 			<ul>
-				<li><a href="category/list.html" th:href="@{admin/category/previous}" th:if="${pagination.hasPreviousPage()}"><span th:text="|#{Previous} ${pagination.pageSize}|">Prototype Previous Page</span></a></li>
-				<li><a href="category/list.html" th:href="@{admin/category/next}" th:if="${pagination.hasNextPage()}"><span th:text="|#{Next} ${pagination.pageSize}|">Prototype Next Page</span></a></li>
+				<li><a href="category/list.html" th:href="@{admin/category/previous}" th:if="${pagination.hasPreviousPage}"><span th:text="|#{Previous} ${pagination.pageSize}|">Prototype Previous Page</span></a></li>
+				<li><a href="category/list.html" th:href="@{admin/category/next}" th:if="${pagination.hasNextPage}"><span th:text="|#{Next} ${pagination.pageSize}|">Prototype Next Page</span></a></li>
 				<li><a href="category/create.html" th:href="@{admin/category/create}"><span th:text="#{ListCategoryCreateLink}">Prototype List Category Create Link</span></a></li>
 			</ul>
 			<table th:unless="${items.empty}" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" >
@@ -40,24 +41,26 @@
 		            <td th:text="*{id}">1234</td>
 		            <td th:text="*{name}">Prototype Name</td>
 		            <td th:text="*{tags}">Prototype Tags</td> 
-		            <td th:text="*{tags}">
-		            	<a th:href="@{|admin/category/*{id}/view|}"
+		            <td>
+		            	<a th:href="@{|/admin/category/*{id}/view|}"
                                    href="view.html"><span th:text="#{ListCategoryViewLink}">Prototype View</span></a>
                         &nbsp;
-                        <a th:href="@{|admin/category/*{id}/edit|}"
+                        <a th:href="@{|/admin/category/*{id}/edit|}"
                                    href="edit.html"><span th:text="#{ListCategoryEditLink}">Prototype Edit</span></a>
                         &nbsp;
-                        <a th:href="@{|admin/category/*{id}/delete|}"
-                                   href="view.html"><span th:text="#{ListCategoryDestroyLink}">Prototype Delete</span></a>
-                                   
-                        <form action="#" th:action="@{'/bookings/' + *{id}}" th:method="'delete'" class="jsfcrud_list_form">
-	                        <button type="submit">Cancel</button>
-	                    </form>
+                        <a href="javascript: submitform();" th:href="@{|javascript:submitform(*{id}])|}" ><span th:text="#{ListCategoryDestroyLink}">Prototype Delete</span></a>
 		            </td>
 		        </tr>
 		        </tbody>
 		    </table>
 		</form>
+		
+		<script type="text/javascript">
+			function submitform(id) {
+				document.forms["list"].deleteId.value=id;
+				document.forms["list"].submit();
+			}
+		</script>
 	</div>
 	
 </body>

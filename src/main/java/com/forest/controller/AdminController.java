@@ -9,15 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.forest.service.UserService.User;
 
 @Controller
-public class SigninController {
+public class AdminController {
 	
-	@RequestMapping(value = "signin")
-	public String signin() {
-        return "signin/signin";
-    }
-	
-	
-	@RequestMapping(value = "signin/success")
+	@RequestMapping(value = "admin/index")
 	public String signinSuccess(Principal principal) {
 		String page = "welcome";
 		if ((principal != null) && ( (principal instanceof UsernamePasswordAuthenticationToken))) {
@@ -29,4 +23,5 @@ public class SigninController {
 		}
         return page;
     }
+
 }

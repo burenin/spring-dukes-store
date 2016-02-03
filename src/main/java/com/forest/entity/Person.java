@@ -193,7 +193,7 @@ public class Person implements Serializable {
 
     public boolean isAdmin() {
     	for (Groups group : getGroupsList()){
-    		if ("ADMINS".equals(group.getName())){
+    		if ("ROLE_ADMINS".equals(group.getName())){
     			return true;
     		}
     	}

@@ -27,11 +27,11 @@ public class CategoryController {
         return "product/listCategory";
     }
 	
-	@RequestMapping(value = "admin/category/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/category/list", method = RequestMethod.GET)
     public String adminCategoryList(Model model) {
         model.addAttribute("items", categoryService.getItems());
         model.addAttribute("pagination", categoryService.getPagination());
-        return "category/list";
+        return "/admin/category/list";
     }
 	
 	@RequestMapping(value = "admin/category/previous", method = RequestMethod.GET)
@@ -59,15 +59,22 @@ public class CategoryController {
     }
 	
 		
-	@RequestMapping(value = "admin/category/{id}/view", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/category/{id}/view", method = RequestMethod.GET)
     public String adminCategoryView(@PathVariable("id") int id, Model model) {
 		Category category = categoryService.findById(id);
         model.addAttribute(category);
-        return "category/view";
+        return "/admin/category/view";
     }
 	
 	@RequestMapping(value = "admin/category/{id}/edit", method = RequestMethod.GET)
     public String adminCategoryEdit(@PathVariable("id") int id, Model model) {
+		Category category = categoryService.findById(id);
+        model.addAttribute(category);
+        return "category/edit";
+    }
+	
+	@RequestMapping(value = "admin/category/{id}/delete", method = RequestMethod.DELETE)
+    public String adminCategoryDelete(@PathVariable("id") int id, Model model) {
 		Category category = categoryService.findById(id);
         model.addAttribute(category);
         return "category/edit";

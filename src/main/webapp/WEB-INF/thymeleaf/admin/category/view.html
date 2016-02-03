@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      lang="en"
+      layout:decorator="layouts/template">
+
+<head>
+    <title th:text="#{ViewCategoryTitle}">View Category Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <link href="../../../../resources/css/default.css"
+          th:href="@{/css/default.css}" rel="stylesheet" />
+          
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../resources/img/logo-small.ico"
+    	th:href="@{/img/logo-small.ico}"/>
+</head>
+<body>
+	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
+	<div layout:fragment="body">
+		<form>
+			<table th:object="${category}">
+				<thead>
+		            <tr>
+		                <th th:text="#{ViewCategoryLabel_id}">Prototype id</th>
+		                <th th:text="#{ViewCategoryLabel_name}">Prototype name</th>
+		                <th th:text="#{ViewCategoryLabel_tags}">Prototype tags</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+			        <tr>
+			        	<td th:text="*{id}"/>
+			        	<td th:text="*{name}"/>
+			        	<td th:text="*{tags}"/>
+			        </tr>
+		        </tbody>
+			</table>
+		</form>
+	</div>
+	
+</body>
+
+</html>
