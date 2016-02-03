@@ -21,27 +21,18 @@
 	<div layout:fragment="body">
 		<form>
 			<table th:object="${category}">
-				<thead>
-		            <tr>
-		                <th th:text="#{EditCategoryLabel_id}">Prototype id</th>
-		                <th th:text="#{EditCategoryLabel_name}">Prototype name</th>
-		                <th th:text="#{EditCategoryLabel_tags}">Prototype tags</th>
-		            </tr>
-		        </thead>
 		        <tbody>
 			        <tr>
-		        		<td><label for="id" th:text="#{EditCategoryLabel_id}">Prototype Category Id</label></td>
+			        	<td><label for="name" th:text="#{CreateCategoryLabel_name}">Prototype Category name</label></td>
 			        	<td>
-							<input id="id" type="text" th:field="*{id}" th:title="#{EditCategoryTitle_id}" readonly="readonly"/>
-						</td>
-			        	<td><label for="name" th:text="#{EditCategoryLabel_name}">Prototype Category name</label></td>
-			        	<td>
-							<input id="name" type="text" th:field="*{name}" th:title="#{EditCategoryTitle_name}" required="required" />
+							<input id="name" type="text" th:field="*{name}" th:title="#{CreateCategoryTitle_name}" required="required" />
 							<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect name</span>
 						</td>
-						<td><label for="tags" th:text="#{EditCategoryLabel_tags}">Prototype Category tags</label></td>
+					</tr>
+					<tr>
+						<td><label for="tags" th:text="#{CreateCategoryLabel_tags}">Prototype Category tags</label></td>
 			        	<td>
-							<input id="tags" type="text" th:field="*{tags}" th:title="#{EditCategoryTitle_tags}"/>
+							<input id="tags" type="text" th:field="*{tags}" th:title="#{CreateCategoryTitle_tags}"/>
 						</td>
 			        </tr>
 		        </tbody>

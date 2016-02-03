@@ -21,19 +21,19 @@
 	<div layout:fragment="body">
 		<form>
 			<table th:object="${category}">
-				<thead>
-		            <tr>
-		                <th th:text="#{ViewCategoryLabel_id}">Prototype id</th>
-		                <th th:text="#{ViewCategoryLabel_name}">Prototype name</th>
-		                <th th:text="#{ViewCategoryLabel_tags}">Prototype tags</th>
-		            </tr>
-		        </thead>
 		        <tbody>
+		        	<tr>
+		        		<td th:text="#{ViewCategoryLabel_id}">Prototype id</td>
+		        		<td th:text="*{id}"/>
+		        	</tr>
 			        <tr>
-			        	<td th:text="*{id}"/>
+			        	<td th:text="#{ViewCategoryLabel_name}">Prototype name</td>
 			        	<td th:text="*{name}"/>
-			        	<td th:text="*{tags}"/>
 			        </tr>
+			        <tr>
+		        		<td th:text="#{ViewCategoryLabel_tags}">Prototype tags</td>
+		        		<td th:text="*{tags}"/>
+		        	</tr>
 		        </tbody>
 			</table>
 		</form>

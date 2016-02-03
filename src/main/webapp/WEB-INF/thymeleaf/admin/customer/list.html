@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      lang="en"
+      layout:decorator="layouts/template">
+
+<head>
+    <title th:text="#{ListCustomerTitle}">List Customer Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <link href="../../../resources/css/default.css"
+          th:href="@{/css/default.css}" rel="stylesheet" />
+          
+    <link rel="shortcut icon" type="image/x-icon" href="../../../resources/img/logo-small.ico"
+    	th:href="@{/img/logo-small.ico}"/>
+</head>
+<body>
+	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
+	<div layout:fragment="body">
+		<form id="list" class="jsfcrud_list_form" th:method="'delete'" th:action="@{/admin/category/delete}" >
+			<input type="hidden" name="deleteId" value=""/>
+			<div th:text="#{ListCustomerEmpty}" th:if="${items.empty}">Prototype Customer List empty </div>
+			<ul class="commandButtons">
+				<li><a href="customer/list.html" th:href="@{/admin/customer/previous}" th:if="${pagination.hasPreviousPage}"><span th:text="|#{Previous} ${pagination.pageSize}|">Prototype Previous Page</span></a></li>
+				<li><a href="customer/list.html" th:href="@{/admin/customer/next}" th:if="${pagination.hasNextPage}"><span th:text="|#{Next} ${pagination.pageSize}|">Prototype Next Page</span></a></li>
+				<li><a href="customer/create.html" th:href="@{/admin/customer/create}"><span th:text="#{ListCustomerCreateLink}">Prototype List Customer Create Link</span></a></li>
+			</ul>
+			<table th:unless="${items.empty}" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" >
+				<thead>
+		            <tr>
+		                <th th:text="#{ListCustomerTitle_id}">Prototype id</th>
+		                <th th:text="#{ListCustomerTitle_firstname}">Prototype first name</th>
+		                <th th:text="#{ListCustomerTitle_lastname}">Prototype last name</th>
+		                <th th:text="#{ListCustomerTitle_email}">Prototype email</th>
+		                <th th:text="#{ListCustomerTitle_address}">Prototype address</th>
+		                <th th:text="#{ListCustomerTitle_city}">Prototype city</th>
+		                <th>&nbsp;</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		        <tr th:each="item : ${items}" th:object="${item}">
+		            <td th:text="*{id}">1234</td>
+		            <td th:text="*{firstname}">Prototype FirstName</td>
+		            <td th:text="*{lastname}">Prototype LastName</td> 
+		            <td th:text="*{email}">Prototype email</td> 
+		            <td th:text="*{address}">Prototype address</td> 
+		            <td th:text="*{city}">Prototype city</td> 
+		            <td>
+		            	<a th:href="@{|/admin/customer/*{id}/view|}"
+                                   href="view.html"><span th:text="#{ListCustomerViewLink}">Prototype View</span></a>
+                        &nbsp;
+                        <a th:href="@{|/admin/customer/*{id}/edit|}"
+                                   href="edit.html"><span th:text="#{ListCustomerEditLink}">Prototype Edit</span></a>
+                        &nbsp;
+                        <a href="javascript: submitform();" th:href="@{|javascript:submitform(*{id}])|}" ><span th:text="#{ListCustomerDestroyLink}">Prototype Delete</span></a>
+		            </td>
+		        </tr>
+		        </tbody>
+		    </table>
+		</form>
+		
+		<script type="text/javascript">
+			function submitform(id) {
+				document.forms["list"].deleteId.value=id;
+				document.forms["list"].submit();
+			}
+		</script>
+	</div>
+	
+</body>
+
+</html>

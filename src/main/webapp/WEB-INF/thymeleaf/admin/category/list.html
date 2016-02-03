@@ -19,13 +19,13 @@
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		<form id="list" class="jsfcrud_list_form" th:method="'delete'" th:action="@{|admin/category/*{id}/delete|}" >
+		<form id="list" class="jsfcrud_list_form" th:method="'delete'" th:action="@{/admin/category/delete}" >
 			<input type="hidden" name="deleteId" value=""/>
 			<div th:text="#{ListCategoryEmpty}" th:if="${items.empty}">Prototype Category List empty </div>
-			<ul>
-				<li><a href="category/list.html" th:href="@{admin/category/previous}" th:if="${pagination.hasPreviousPage}"><span th:text="|#{Previous} ${pagination.pageSize}|">Prototype Previous Page</span></a></li>
-				<li><a href="category/list.html" th:href="@{admin/category/next}" th:if="${pagination.hasNextPage}"><span th:text="|#{Next} ${pagination.pageSize}|">Prototype Next Page</span></a></li>
-				<li><a href="category/create.html" th:href="@{admin/category/create}"><span th:text="#{ListCategoryCreateLink}">Prototype List Category Create Link</span></a></li>
+			<ul class="commandButtons">
+				<li><a href="category/list.html" th:href="@{/admin/category/previous}" th:if="${pagination.hasPreviousPage}"><span th:text="|#{Previous} ${pagination.pageSize}|">Prototype Previous Page</span></a></li>
+				<li><a href="category/list.html" th:href="@{/admin/category/next}" th:if="${pagination.hasNextPage}"><span th:text="|#{Next} ${pagination.pageSize}|">Prototype Next Page</span></a></li>
+				<li><a href="category/create.html" th:href="@{/admin/category/create}"><span th:text="#{ListCategoryCreateLink}">Prototype List Category Create Link</span></a></li>
 			</ul>
 			<table th:unless="${items.empty}" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" >
 				<thead>

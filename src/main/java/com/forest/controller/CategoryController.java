@@ -43,7 +43,7 @@ public class CategoryController {
 		}
 		model.addAttribute("items", categoryService.getItems());
         model.addAttribute("pagination", categoryService.getPagination());
-        return "category/list";
+        return "/admin/category/list";
     }
 	
 	@RequestMapping(value = "admin/category/next", method = RequestMethod.GET)
@@ -55,7 +55,7 @@ public class CategoryController {
 		}
 		model.addAttribute("items", categoryService.getItems());
         model.addAttribute("pagination", categoryService.getPagination());
-        return "category/list";
+        return "/admin/category/list";
     }
 	
 		
@@ -70,7 +70,7 @@ public class CategoryController {
     public String adminCategoryEdit(@PathVariable("id") int id, Model model) {
 		Category category = categoryService.findById(id);
         model.addAttribute(category);
-        return "category/edit";
+        return "/admin/category/edit";
     }
 	
 	@RequestMapping(value = "admin/category/{id}/delete", method = RequestMethod.DELETE)
@@ -80,10 +80,10 @@ public class CategoryController {
         return "category/edit";
     }
 	
-	@RequestMapping(value = "admin/category/create", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/category/create", method = RequestMethod.GET)
     public String adminCategoryCreate(Model model) {
-        model.addAttribute("items", categoryService.getItems());
-        return "product/listCategory";
+        model.addAttribute(new Category());
+        return "/admin/category/create";
     }
 	
 }
