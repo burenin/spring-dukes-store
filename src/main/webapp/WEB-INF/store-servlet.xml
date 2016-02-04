@@ -17,11 +17,16 @@
   <mvc:resources location="/resources/css/" mapping="/css/**" />
     
    <mvc:view-controller path="/" view-name="welcome" />
+   <mvc:view-controller path="/admin/index"/>
 
   <!-- **************************************************************** -->
   <!--  SPRING ANNOTATION PROCESSING                                    -->
   <!-- **************************************************************** -->
-  <mvc:annotation-driven conversion-service="conversionService"/>
+  <mvc:annotation-driven conversion-service="conversionService">
+  	<mvc:argument-resolvers>
+        <bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver"/>
+    </mvc:argument-resolvers>
+  </mvc:annotation-driven>
   <context:component-scan base-package="com.forest.controller" />
 
 

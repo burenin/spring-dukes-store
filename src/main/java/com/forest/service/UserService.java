@@ -7,9 +7,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.forest.entity.Person;
 
+@Service
 public class UserService implements UserDetailsService {
 	
 	@Autowired
@@ -40,7 +42,7 @@ public class UserService implements UserDetailsService {
 
 		private static final long serialVersionUID = 7551786221146601323L;
 		private final Person person;
-
+		
         public User(Person person) {
             super(person.getEmail(), person.getPassword(), person.getAuthorities());
             this.person = person;

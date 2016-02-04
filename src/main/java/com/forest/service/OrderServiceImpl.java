@@ -26,17 +26,8 @@ public class OrderServiceImpl extends AbstractService<CustomerOrder> implements 
 
 
 	@Override
-	public List<CustomerOrder> getMyOrders() {
-		
-		
-		
-//		if (user != null) {
-
-            
-            
-            
-//          List<CustomerOrder> myOrders = repository.getOrderByCustomerId(user.getId());
-            List<CustomerOrder> myOrders = repository.getOrderByCustomerId(1);
+	public List<CustomerOrder> getMyOrders(Integer id) {
+            List<CustomerOrder> myOrders = repository.getOrderByCustomerId(id);
             
     		if (myOrders.isEmpty()) {
 //    			LOGGER.debug("Customer {0} has no orders to display.", user.getEmail());

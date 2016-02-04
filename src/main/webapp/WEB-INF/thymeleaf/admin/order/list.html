@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      lang="en"
+      layout:decorator="layouts/template">
+
+<head>
+    <title th:text="#{ListCustomerOrderTitle}">List Order Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <link href="../../../resources/css/default.css"
+          th:href="@{/css/default.css}" rel="stylesheet" />
+          
+    <link rel="shortcut icon" type="image/x-icon" href="../../../resources/img/logo-small.ico"
+    	th:href="@{/img/logo-small.ico}"/>
+</head>
+<body>
+	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
+	<div layout:fragment="body">
+		<form id="list" class="jsfcrud_list_form" th:method="'delete'" th:action="@{/admin/order/update}" >
+			<input type="hidden" name="orderId" value=""/>
+			<div th:text="#{ListCustomerOrderEmpty}" th:if="${items.empty}">Prototype Order List empty </div>
+			<ul class="commandButtons">
+				<li><a href="order/list.html" th:href="@{/admin/order/previous}" th:if="${pagination.hasPreviousPage}"><span th:text="|#{Previous} ${pagination.pageSize}|">Prototype Previous Page</span></a></li>
+				<li><a href="order/list.html" th:href="@{/admin/order/next}" th:if="${pagination.hasNextPage}"><span th:text="|#{Next} ${pagination.pageSize}|">Prototype Next Page</span></a></li>
+				<li><a href="/admin/index"><span th:text="#{GoToShipment}">Prototype Go to shipment</span></a></li>
+			</ul>
+			<table th:unless="${items.empty}" border="0" cellpadding="2" cellspacing="0" rules="all" style="border:solid 1px">
+				<thead>
+		            <tr>
+		                <th th:text="#{ListCustomerOrderTitle_id}">Prototype id</th>
+		                <th th:text="#{ListCustomerOrderTitle_amount}">Prototype amount</th>
+		                <th th:text="#{ListCustomerOrderTitle_dateCreated}">Prototype date created</th>
+		                <th th:text="#{ListCustomerOrderTitle_orderStatus}">Prototype order status</th>
+		                <th th:text="#{ListCustomerOrderTitle_statusDescription}">Prototype status description</th>
+		                <th th:text="#{ListCustomerOrderTitle_customer}">Prototype customer</th>
+		                <th>&nbsp;</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		        <tr th:each="item : ${items}" th:object="${item}" th:class="${itemStat.odd}? 'jsfcrud_odd_row' : 'jsfcrud_even_row'">
+		            <td th:text="*{id}">1234</td>
+		            <td th:text="|$ *{#numbers.formatDecimal(amount, 0, 'COMMA', 2, 'POINT')}|">0.00</td>
+		            <td th:text="*{{dateCreated}}">prototype date created</td>
+		            <td th:text="*{orderStatus.status}">Prototype status</td> 
+		            <td th:text="*{orderStatus.description}">Prototype description</td> 
+		            <td th:text="*{customer.firstname}">Prototype customer city</td> 
+		            <td>
+		            	<a th:href="@{|/admin/order/*{id}/view|}"
+                                   href="view.html"><span th:text="#{ListCustomerOrderViewLink}">Prototype View</span></a>
+                        &nbsp;
+                        <a th:href="@{|javascript:submitDestroyForm(*{id}])|}"
+                                   href="edit.html"><span th:text="#{ListCustomerOrderDestroyLink}">Prototype Destroy</span></a>
+                        &nbsp;
+                        <a href="edit.html" th:href="@{|javascript:submitCancelForm(*{id}])|}" ><span th:text="#{ListCustomerOrderCancelLink}">Prototype Cancel</span></a>
+		            </td>
+		        </tr>
+		        </tbody>
+		    </table>
+		</form>
+		
+		<script type="text/javascript">
+			function submitDestroyForm(id) {
+				document.forms["list"].orderId.value=id;
+				document.forms["list"].method=delete;
+				document.forms["list"].submit();
+			}
+
+			function submitCancelForm(id) {
+				document.forms["list"].orderId.value=id;
+				document.forms["list"].method=put;
+				document.forms["list"].submit();
+			}
+		</script>
+	</div>
+	
+</body>
+
+</html>

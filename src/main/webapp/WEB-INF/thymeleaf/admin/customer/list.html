@@ -27,7 +27,7 @@
 				<li><a href="customer/list.html" th:href="@{/admin/customer/next}" th:if="${pagination.hasNextPage}"><span th:text="|#{Next} ${pagination.pageSize}|">Prototype Next Page</span></a></li>
 				<li><a href="customer/create.html" th:href="@{/admin/customer/create}"><span th:text="#{ListCustomerCreateLink}">Prototype List Customer Create Link</span></a></li>
 			</ul>
-			<table th:unless="${items.empty}" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" >
+			<table th:unless="${items.empty}" border="0" cellpadding="2" cellspacing="0" rules="all" >
 				<thead>
 		            <tr>
 		                <th th:text="#{ListCustomerTitle_id}">Prototype id</th>
@@ -40,7 +40,7 @@
 		            </tr>
 		        </thead>
 		        <tbody>
-		        <tr th:each="item : ${items}" th:object="${item}">
+		        <tr th:each="item : ${items}" th:object="${item}" th:class="${itemStat.odd}? 'jsfcrud_odd_row' : 'jsfcrud_even_row'">
 		            <td th:text="*{id}">1234</td>
 		            <td th:text="*{firstname}">Prototype FirstName</td>
 		            <td th:text="*{lastname}">Prototype LastName</td> 

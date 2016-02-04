@@ -21,7 +21,7 @@
 	<div layout:fragment="body">
 		<div th:if="${#authorization.expression('!isAuthenticated()')}" th:text="#{NoOrdersForUnauthenticated}">no order for !authenticated user</div>
 		<form>
-			<table th:unless="${items.empty}" th:if="${#authorization.expression('isAuthenticated()')}">
+			<table th:unless="${myOrders.empty}" th:if="${#authorization.expression('isAuthenticated()')}">
 				<thead>
 		            <tr>
 		                <th th:text="#{ListCustomerOrderTitle_id}">Prototype id</th>

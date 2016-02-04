@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.forest.entity.Category;
 import com.forest.service.ICategoryService;
@@ -73,8 +74,8 @@ public class CategoryController {
         return "/admin/category/edit";
     }
 	
-	@RequestMapping(value = "admin/category/{id}/delete", method = RequestMethod.DELETE)
-    public String adminCategoryDelete(@PathVariable("id") int id, Model model) {
+	@RequestMapping(value = "admin/category/delete", method = RequestMethod.DELETE)
+    public String adminCategoryDelete(@RequestParam("id") Integer id, Model model) {
 		Category category = categoryService.findById(id);
         model.addAttribute(category);
         return "category/edit";
