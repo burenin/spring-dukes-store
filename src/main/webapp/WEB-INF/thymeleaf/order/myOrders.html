@@ -7,7 +7,7 @@
       layout:decorator="layouts/template">
 
 <head>
-    <title th:text="#{ListCategoryTitle}">List Category Title</title>
+    <title th:text="#{ViewCustomerOrderTitle}">List Category Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     
     <link href="../../../resources/css/default.css"
@@ -19,8 +19,29 @@
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		<form id="categoryList">
-			Prototype My Orders
+		<div th:if="${#authorization.expression('!isAuthenticated()')}" th:text="#{NoOrdersForUnauthenticated}">no order for !authenticated user</div>
+		<form>
+			<table th:unless="${items.empty}" th:if="${#authorization.expression('isAuthenticated()')}">
+				<thead>
+		            <tr>
+		                <th th:text="#{ListCustomerOrderTitle_id}">Prototype id</th>
+		                <th th:text="#{ListCustomerOrderTitle_orderStatus}">Prototype order status</th>
+		                <th th:text="#{ListCustomerOrderTitle_statusDescription}">Prototype order status description</th>
+		                <th th:text="#{ListCustomerOrderTitle_amount}">Prototype order amount</th>
+		                <th th:text="#{ListCustomerOrderTitle_dateCreated}">Prototype order date created</th>
+		                
+		            </tr>
+		        </thead>
+				<tbody>
+			        <tr th:each="item : ${myOrders}" th:class="${itemStat.odd}? 'firstRow' : 'secondRow'" th:object="${item}">
+			        	<td th:text="*{id}">1234</td>
+			        	<td th:text="*{orderStatus.status}">prototype order status</td>
+			        	<td th:text="*{orderStatus.description}">prototype order status description</td>
+			        	<td th:text="|$ *{#numbers.formatDecimal(amount, 0, 'COMMA', 2, 'POINT')}|">0.00</td>
+			        	<td th:text="*{{dateCreated}}">prototype date created</td>
+			        </tr>
+		        </tbody>
+			</table>
 		</form>
 	</div>
 	
