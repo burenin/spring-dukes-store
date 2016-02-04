@@ -97,9 +97,7 @@ public class OrderController {
     public String adminOrderDelete(@RequestParam("id") Integer id, Model model) {
 		CustomerOrder order = orderService.findById(id);
 		orderService.delete(order);
-		model.addAttribute("items", orderService.getItems());
-        model.addAttribute("pagination", orderService.getPagination());
-        return "/admin/order/list";
+		return "redirect:" + "/admin/order/list";
     }
 	
 	@RequestMapping(value = "/admin/order/update", method = RequestMethod.PUT)
@@ -108,5 +106,12 @@ public class OrderController {
 		model.addAttribute("items", orderService.getItems());
         model.addAttribute("pagination", orderService.getPagination());
         return "/admin/order/list";
+    }
+	
+	@RequestMapping(value = "/admin/order/{id}/delete", method = RequestMethod.GET)
+    public String adminOrderDelete(@PathVariable("id") int id, Model model) {
+		CustomerOrder order = orderService.findById(id);
+		orderService.delete(order);
+        return "redirect:" + "/admin/order/list";
     }
 }

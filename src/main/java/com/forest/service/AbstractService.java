@@ -87,7 +87,9 @@ public abstract class AbstractService<T> implements IService<T> {
 		return items;
 	}
 
-	
+	private void recreateModel() {
+        items = null;
+    }
 	
 	
 }

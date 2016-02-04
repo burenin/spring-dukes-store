@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      lang="en"
+      layout:decorator="layouts/template">
+
+<head>
+    <title th:text="#{ViewCustomerOrderTitle}">View Category Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <link href="../../../../resources/css/default.css"
+          th:href="@{/css/default.css}" rel="stylesheet" />
+          
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../resources/img/logo-small.ico"
+    	th:href="@{/img/logo-small.ico}"/>
+</head>
+<body>
+	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
+	<div layout:fragment="body" th:object="${order}">
+		<form id="orderForm" th:action="@{|/admin/order/*{id}/delete}|" th:method="delete" >
+			<table>
+		        <tbody>
+		        	<tr>
+		        		<td th:text="#{ViewCustomerOrderLabel_id}">Prototype id</td>
+		        		<td><span th:text="*{id}" th:title="#{ViewCustomerOrderTitle_id}">123</span></td>
+		        	</tr>
+			        <tr>
+			        	<td th:text="#{ViewCustomerOrderLabel_amount}">Prototype amount</td>
+			        	<td><span th:text="*{amount}" th:title="#{ViewCustomerOrderTitle_amount}">123</span></td>
+			        </tr>
+			        <tr>
+		        		<td th:text="#{ViewCustomerOrderLabel_dateCreated}">Prototype created</td>
+		        		<td><span th:text="*{{dateCreated}}" th:title="#{ViewCustomerOrderTitle_dateCreated}">123</span></td>
+		        	</tr>
+		        	<tr>
+		        		<td th:text="#{ViewCustomerOrderLabel_orderStatus}">Prototype status</td>
+		        		<td><span th:text="*{orderStatus.status}" th:title="#{ViewCustomerOrderTitle_orderStatus}">123</span></td>
+		        	</tr>
+		        	<tr>
+		        		<td th:text="#{ViewCustomerOrderLabel_customer}">Prototype status</td>
+		        		<td><span th:text="*{customer.firstname}" th:title="#{ViewCustomerOrderTitle_customer}">123</span></td>
+		        	</tr>
+		        </tbody>
+			</table>
+			<ul class="commandButtons">
+				<li>
+					<a href="admin/order/list.html" th:href="@{javascript:submitDestroyForm()}">
+						<span th:text="#{ViewCustomerOrderDestroyLink}">Prototype Category List</span>
+					</a>
+				</li>
+				<li>
+					<a href="admin/order/list.html" th:href="@{/admin/order/list}">
+						<span th:text="#{ViewCustomerOrderShowAllLink}">Prototype Show All</span>
+					</a>
+				</li>
+			</ul>
+		</form>
+		
+		
+		<script type="text/javascript">
+			function submitDestroyForm() {
+				document.forms["orderForm"].submit();
+			}
+		</script>
+		
+		</div>
+	</body>
+</html>

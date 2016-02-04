@@ -27,26 +27,6 @@ public class OrderServiceImpl extends AbstractService<CustomerOrder> implements 
 
 	@Override
 	public List<CustomerOrder> getMyOrders(Integer id) {
-            List<CustomerOrder> myOrders = repository.getOrderByCustomerId(id);
-            
-    		if (myOrders.isEmpty()) {
-//    			LOGGER.debug("Customer {0} has no orders to display.", user.getEmail());
-    			LOGGER.debug("Customer {0} has no orders to display.", "");
-    		    return null;
-    		} else {
-    			LOGGER.debug("Order amount:{0}", myOrders.get(0).getAmount());
-    		    return myOrders;
-    		}
-
-//        } 
-//		else {
-//
-//            JsfUtil.addErrorMessage("Current user is not authenticated. Please do login before accessing your orders.");
-//
-//            return null;
-//        }
+		return repository.getOrderByCustomerId(id);
 	}
-	
-	
-
 }
